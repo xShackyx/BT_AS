@@ -54,17 +54,6 @@ function App() {
       />
     </>
   );
-
-  //   return (
-  //     <UnitProvider>
-  //       <div className="flex items-center align-middle">
-  //         <Card />
-  //         <img className="w-[42rem] h-[27rem]" src={testCard} />
-  //       </div>
-  //       <Searchbar />
-  //       <SearchList />
-  //     </UnitProvider>
-  //   );
 }
 
 export default App;
