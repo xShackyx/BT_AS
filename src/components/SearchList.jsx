@@ -1,13 +1,4 @@
-// import { useUnit } from "../contexts/UnitContext-v1";
-
 function SearchList({ units, selectedUnit, setSelectedUnit }) {
-  // const { units, setSelectedUnit } = useUnit();
-
-  function handleSelect(unit) {
-    setSelectedUnit(unit);
-    console.log(unit);
-  }
-
   return (
     <ul>
       {units?.map((unit) => (
@@ -19,7 +10,7 @@ function SearchList({ units, selectedUnit, setSelectedUnit }) {
                 : ""
               : ""
           }`}
-          onClick={() => handleSelect(unit)}
+          onClick={() => setSelectedUnit(unit)}
           key={unit.Id}
         >
           {unit.Name}

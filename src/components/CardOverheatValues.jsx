@@ -1,7 +1,7 @@
-// import { useUnit } from "../contexts/UnitContext-v1";
+import { useUnit } from "../contexts/UnitContext";
 
 function CardOverheatValues() {
-  // const { selectedUnit } = useUnit();
+  const { unit } = useUnit();
 
   return (
     <div className="p-1 col-span-3 bg-gray-300 border border-black rounded">

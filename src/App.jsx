@@ -14,23 +14,28 @@ function App() {
   const debouncedQuery = useDebounce(searchQuery, 1);
   const [selectedUnit, setSelectedUnit] = useState({});
 
+  async function getUnitList(query) {
+    try {
+      const res = await Axios({
+        url: `https://masterunitlist.azurewebsites.net/Unit/QuickList`,
+        params: { MinPV: 1, MaxPV: 999, Name: query },
+      });
+      return res.data.Units;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(
     function () {
-      async function fetchUnitList() {
-        try {
-          const res = await Axios({
-            url: `https://masterunitlist.azurewebsites.net/Unit/QuickList`,
-            params: { MinPV: 1, MaxPV: 999, Name: debouncedQuery },
-          });
-          setUnits(res.data.Units);
-        } catch (error) {
-          console.log(error);
-        }
+      async function fetchUnitList(query) {
+        const unitList = await getUnitList(query);
+        setUnits(unitList);
       }
       if (debouncedQuery.length < 3) {
         return setUnits([]);
       }
-      fetchUnitList();
+      fetchUnitList(debouncedQuery);
     },
     [debouncedQuery]
   );

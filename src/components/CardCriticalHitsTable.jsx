@@ -1,7 +1,7 @@
-// import { useUnit } from "../contexts/UnitContext-v1";
+import { useUnit } from "../contexts/UnitContext";
 
 function CardCriticalHitsTable() {
-  // const { selectedUnit } = useUnit();
+  const { unit } = useUnit();
 
   return (
     <div className="p-1 bg-gray-300 border border-black rounded">critical</div>

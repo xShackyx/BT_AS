@@ -1,11 +1,11 @@
-// import { useUnit } from "../contexts/UnitContext-v1";
+import { useUnit } from "../contexts/UnitContext";
 
 function CardSpecialStats() {
-  // const { selectedUnit } = useUnit();
+  const { unit } = useUnit();
 
   return (
     <div className="p-1 bg-gray-300 border border-black rounded">
-      SPECIAL: {selectedUnit ? selectedUnit.BFAbilities : ""}
+      SPECIAL: {unit ? unit.BFAbilities : ""}
     </div>
   );
 }
