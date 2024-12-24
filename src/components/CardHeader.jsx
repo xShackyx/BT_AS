@@ -2,6 +2,7 @@ import { useUnit } from "../contexts/UnitContext";
 
 function CardHeader() {
   const { selectedUnit } = useUnit();
+  // const selectedUnit = {};
 
   return (
     <div className="flex justify-between">

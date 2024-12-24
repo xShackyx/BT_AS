@@ -1,7 +1,7 @@
-import { useUnit } from "../contexts/UnitContext";
+// import { useUnit } from "../contexts/UnitContext-v1";
 
-function Searchbar() {
-  const { searchQuery, getSearchQuery } = useUnit();
+function Searchbar({ searchQuery, setSearchQuery }) {
+  // const { searchQuery, getSearchQuery } = useUnit();
 
   return (
     <form className="">
@@ -10,7 +10,7 @@ function Searchbar() {
         type="text"
         placeholder="Search for an unit"
         value={searchQuery}
-        onChange={(e) => getSearchQuery(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
     </form>
   );

@@ -1,7 +1,8 @@
-import { useUnit } from "../contexts/UnitContext";
+// import { useUnit } from "../contexts/UnitContext-v1";
 
 function CardUnitType() {
-  const { selectedUnit } = useUnit();
+  // const { selectedUnit } = useUnit();
+  const selectedUnit = {};
 
   return (
     <div className="py-1 px-3 flex flex-col gap-2 col-span-3 row-span-2 bg-gray-300 border border-black rounded uppercase">

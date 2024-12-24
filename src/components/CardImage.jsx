@@ -1,8 +1,8 @@
-import { useUnit } from "../contexts/UnitContext";
+// import { useUnit } from "../contexts/UnitContext";
 
 function CardImage() {
-  const { selectedUnit } = useUnit();
-
+  // const { selectedUnit } = useUnit();
+  const selectedUnit = {};
   return (
     <img
       className="absolute right-0 bottom-0 -z-10 overflow-hidden"
