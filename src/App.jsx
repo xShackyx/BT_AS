@@ -1,18 +1,18 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "./hooks/useDebounce";
 import Axios from "axios";
 
 import Card from "./components/Card";
-import Searchbar from "./components/Searchbar";
-import testCard from "./assets/test-card.jpg";
-import SearchList from "./components/SearchList";
-// import { UnitProvider } from "./contexts/UnitContext";
+import SearchSection from "./components/SearchSection";
+import SavedSection from "./components/SavedSection";
 
 function App() {
   const [units, setUnits] = useState([]);
+  const [filterQuery, setFilterQuery] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedQuery = useDebounce(searchQuery, 1);
-  const [selectedUnit, setSelectedUnit] = useState({});
+  const [selectedUnit, setSelectedUnit] = useState(null);
+  const [roster, setRoster] = useState([]);
 
   async function getUnitList(query) {
     try {
@@ -41,18 +41,33 @@ function App() {
   );
 
   return (
-    <>
-      <div className="flex items-center align-middle">
-        <Card selectedUnit={selectedUnit} />
-        <img className="w-[42rem] h-[27rem]" src={testCard} />
-      </div>
-      <Searchbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <SearchList
+    <div className="p-1 flex justify-evenly bg-slate-200 gap-1">
+      {/* <img className="w-[42rem] h-[27rem]" src={testCard} /> */}
+
+      <SearchSection
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        filterQuery={filterQuery}
+        setFilterQuery={setFilterQuery}
         units={units}
         selectedUnit={selectedUnit}
         setSelectedUnit={setSelectedUnit}
+        roster={roster}
+        setRoster={setRoster}
       />
-    </>
+      {selectedUnit ? (
+        <Card selectedUnit={selectedUnit} />
+      ) : (
+        "Search and select an unit to start"
+      )}
+      {/* <button onClick={() => console.log(roster)}>pippo</button> */}
+      <SavedSection
+        roster={roster}
+        setRoster={setRoster}
+        selectedUnit={selectedUnit}
+        setSelectedUnit={setSelectedUnit}
+      />
+    </div>
   );
 }
 

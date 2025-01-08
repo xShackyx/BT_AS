@@ -5,8 +5,10 @@ function CardSpecialStats() {
 
   return (
     <div className="p-1 flex text-balance bg-gray-300 border border-black rounded">
-      <p>SPECIAL:</p>
-      <span>{unit ? unit.BFAbilities : ""}</span>
+      <p className="pr-1">SPECIAL:</p>
+      <span className="flex flex-wrap font-semibold">
+        {unit && unit.BFAbilities ? unit.BFAbilities.replaceAll(",", ", ") : ""}
+      </span>
     </div>
   );
 }

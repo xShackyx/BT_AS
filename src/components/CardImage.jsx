@@ -5,7 +5,7 @@ function CardImage() {
 
   return (
     <img
-      className="absolute right-0 bottom-0 -z-10 overflow-hidden"
+      className="absolute h-full w-1/2 object-contain right-0 top-0 -z-10"
       src={unit ? unit.ImageUrl : ""}
     />
   );

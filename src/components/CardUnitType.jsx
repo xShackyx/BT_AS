@@ -3,7 +3,8 @@ import { useUnit } from "../contexts/UnitContext";
 function TMMCalc(BFMove) {
   const mv = BFMove?.split('"')[0];
 
-  if (mv < 4) return "0";
+  if (mv <= 0) return "-4";
+  if (mv > 0 && mv < 4) return "0";
   if (mv >= 4 && mv < 9) return "1";
   if (mv >= 9 && mv < 13) return "2";
   if (mv >= 13 && mv < 19) return "3";

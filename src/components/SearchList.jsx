@@ -1,9 +1,21 @@
-function SearchList({ units, selectedUnit, setSelectedUnit }) {
+import CardButton from "./CardButton";
+
+function SearchList({
+  units,
+  selectedUnit,
+  setSelectedUnit,
+  roster,
+  setRoster,
+}) {
+  function saveUnit() {
+    setRoster([...roster, selectedUnit]);
+  }
+
   return (
-    <ul>
+    <ul className="flex flex-col gap-1 overflow-auto">
       {units?.map((unit) => (
-        <button
-          className={`px-1 border border-b-black rounded ${
+        <li
+          className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col ${
             selectedUnit !== null
               ? unit.Id === selectedUnit.Id
                 ? "bg-yellow-400"
@@ -13,8 +25,23 @@ function SearchList({ units, selectedUnit, setSelectedUnit }) {
           onClick={() => setSelectedUnit(unit)}
           key={unit.Id}
         >
-          {unit.Name}
-        </button>
+          <div>
+            <span className="font-semibold">{unit.Name} </span> | PV:{" "}
+            {unit.BFPointValue}| MV: {unit.BFMove}
+          </div>
+          <div>
+            A/S: {unit.BFArmor}/{unit.BFStructure} | Damage:{" "}
+            {unit.BFDamageShort}/{unit.BFDamageMedium}/{unit.BFDamageLong}{" "}
+            {unit.BFAbilities ? `| Special: ${unit.BFAbilities}` : ""}
+          </div>
+          {unit.Id === selectedUnit?.Id ? (
+            <CardButton color={"bg-green-500"} onClick={saveUnit}>
+              💾
+            </CardButton>
+          ) : (
+            ""
+          )}
+        </li>
       ))}
     </ul>
   );
