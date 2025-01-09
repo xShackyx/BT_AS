@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "./hooks/useDebounce";
 import Axios from "axios";
 
-import Card from "./components/Card";
 import SearchSection from "./components/SearchSection";
 import SavedSection from "./components/SavedSection";
+import PreviewCardSection from "./components/PreviewCardSection";
 
 function App() {
   const [units, setUnits] = useState([]);
@@ -13,6 +13,8 @@ function App() {
   const debouncedQuery = useDebounce(searchQuery, 1);
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [roster, setRoster] = useState([]);
+  const [unitCustomName, setUnitCustomName] = useState("");
+  const [unitSkill, setUnitSkill] = useState(4);
 
   async function getUnitList(query) {
     try {
@@ -41,7 +43,7 @@ function App() {
   );
 
   return (
-    <div className="p-1 flex justify-evenly bg-slate-200 gap-1">
+    <div className="p-5 flex justify-evenly bg-slate-200 gap-2">
       {/* <img className="w-[42rem] h-[27rem]" src={testCard} /> */}
 
       <SearchSection
@@ -54,12 +56,16 @@ function App() {
         setSelectedUnit={setSelectedUnit}
         roster={roster}
         setRoster={setRoster}
+        unitCustomName={unitCustomName}
+        unitSkill={unitSkill}
       />
-      {selectedUnit ? (
-        <Card selectedUnit={selectedUnit} />
-      ) : (
-        "Search and select an unit to start"
-      )}
+      <PreviewCardSection
+        selectedUnit={selectedUnit}
+        unitCustomName={unitCustomName}
+        setUnitCustomName={setUnitCustomName}
+        unitSkill={unitSkill}
+        setUnitSkill={setUnitSkill}
+      />
       {/* <button onClick={() => console.log(roster)}>pippo</button> */}
       <SavedSection
         roster={roster}

@@ -12,7 +12,7 @@ function TMMCalc(BFMove) {
   if (mv >= 35) return "5";
 }
 
-function CardUnitType() {
+function CardUnitType({ unitSkill }) {
   const { unit } = useUnit();
 
   return (
@@ -41,7 +41,7 @@ function CardUnitType() {
           <span className="font-bold">{unit ? unit.Role?.Name : ""}</span>
         </p>
         <p>
-          {"Skill: "} {unit ? unit.Skill : " "}
+          {"Skill: "} {unit ? unitSkill : " "}
         </p>
       </div>
     </div>

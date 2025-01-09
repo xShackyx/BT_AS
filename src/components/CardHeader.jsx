@@ -1,14 +1,14 @@
 import { useUnit } from "../contexts/UnitContext";
 
-function CardHeader() {
+function CardHeader({ unitCustomName }) {
   const { unit } = useUnit();
 
   return (
     <div className="flex justify-between">
       <div className="flex flex-col px-1">
-        <p className="text-xl">{unit ? unit.Variant : "TestModel"}</p>
+        <p className="text-xl">{unitCustomName ? unitCustomName : ""}</p>
         <p className="font-extrabold uppercase text-xl ">
-          {unit ? unit.Name : "testName"}
+          {unit ? unit.Name : "Unit Name"}
         </p>
       </div>
       <div className="px-5 font-bold text-2xl">

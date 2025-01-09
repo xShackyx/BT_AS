@@ -11,6 +11,8 @@ function SearchSection({
   setSelectedUnit,
   roster,
   setRoster,
+  unitCustomName,
+  unitSkill,
 }) {
   return (
     <div className="flex flex-col gap-2 w-1/3 h-screen">
@@ -26,6 +28,8 @@ function SearchSection({
         setSelectedUnit={setSelectedUnit}
         roster={roster}
         setRoster={setRoster}
+        unitCustomName={unitCustomName}
+        unitSkill={unitSkill}
       />
     </div>
   );

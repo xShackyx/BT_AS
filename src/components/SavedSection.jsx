@@ -3,7 +3,10 @@ import CardButton from "./CardButton";
 function SavedSection({ roster, setRoster, selectedUnit, setSelectedUnit }) {
   function removeUnit(id, i) {
     setRoster([
-      ...roster.filter((unit) => unit.Id.toString() + i !== id.toString() + i),
+      ...roster.filter(
+        (unit, unitIndex) =>
+          unit.Id.toString() + unitIndex !== id.toString() + i
+      ),
     ]);
   }
 
@@ -23,15 +26,19 @@ function SavedSection({ roster, setRoster, selectedUnit, setSelectedUnit }) {
             onClick={() => setSelectedUnit(unit)}
             key={unit.Id.toString() + i}
           >
+            {unit.customName ? (
+              <p className="font-semibold">{unit.customName}</p>
+            ) : (
+              ""
+            )}
             <div>
               <span className="font-semibold">{unit.Name} </span> | PV:{" "}
-              {unit.BFPointValue}| MV: {unit.BFMove}
+              {unit.BFPointValue} | MV: {unit.BFMove} | Skill: {unit.skill}
             </div>
             <div>
               A/S: {unit.BFArmor}/{unit.BFStructure} | Damage:{" "}
               {unit.BFDamageShort}/{unit.BFDamageMedium}/{unit.BFDamageLong}{" "}
-              {unit.BFAbilities ? `| Special: ${unit.BFAbilities}` : ""}-
-              {unit.Id.toString() + i}
+              {unit.BFAbilities ? `| Special: ${unit.BFAbilities}` : ""}
             </div>
             {unit.Id === selectedUnit.Id ? (
               <CardButton
