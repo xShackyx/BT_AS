@@ -7,6 +7,7 @@ function SearchList({
   roster,
   setRoster,
   unitCustomName,
+  setUnitCustomName,
   unitSkill,
 }) {
   function saveUnit() {
@@ -15,9 +16,8 @@ function SearchList({
       customName: unitCustomName,
       skill: unitSkill,
     };
-    // selectedUnit -> newUnit -> save newUnit into roster
-    console.log(newUnit);
     setRoster([...roster, newUnit]);
+    setUnitCustomName("");
   }
 
   return (

@@ -12,6 +12,7 @@ function SearchSection({
   roster,
   setRoster,
   unitCustomName,
+  setUnitCustomName,
   unitSkill,
 }) {
   return (
@@ -29,6 +30,7 @@ function SearchSection({
         roster={roster}
         setRoster={setRoster}
         unitCustomName={unitCustomName}
+        setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}
       />
     </div>

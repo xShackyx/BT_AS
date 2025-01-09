@@ -20,28 +20,28 @@ function CardUnitType({ unitSkill }) {
       <div className="flex justify-between">
         <p>
           {"Tp: "}
-          <span className="font-bold">{unit ? unit.BFType : ""}</span>
+          <span className="font-bold">{unit.BFType}</span>
         </p>
         <p>
           {"Sz: "}
-          <span className="font-bold">{unit ? unit.BFSize : ""}</span>
+          <span className="font-bold">{unit.BFSize}</span>
         </p>
         <p>
           {"Tmm: "}
-          <span className="font-bold">{unit ? TMMCalc(unit.BFMove) : ""}</span>
+          <span className="font-bold">{TMMCalc(unit.BFMove)}</span>
         </p>
         <p>
           {"Mv: "}
-          <span className="font-bold">{unit ? unit.BFMove : ""}</span>
+          <span className="font-bold">{unit.BFMove}</span>
         </p>
       </div>
       <div className="flex justify-between">
         <p>
           {"Role: "}
-          <span className="font-bold">{unit ? unit.Role?.Name : ""}</span>
+          <span className="font-bold">{unit.Role?.Name}</span>
         </p>
         <p>
-          {"Skill: "} {unit ? unitSkill : " "}
+          {"Skill: "} {unit.skill ? unit.skill : unitSkill}
         </p>
       </div>
     </div>

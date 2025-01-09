@@ -57,6 +57,7 @@ function App() {
         roster={roster}
         setRoster={setRoster}
         unitCustomName={unitCustomName}
+        setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}
       />
       <PreviewCardSection

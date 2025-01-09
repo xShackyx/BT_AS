@@ -5,15 +5,28 @@ function CardHeader({ unitCustomName }) {
 
   return (
     <div className="flex justify-between">
-      <div className="flex flex-col px-1">
-        <p className="text-xl ">{unitCustomName ? unitCustomName : ""}</p>
+      <div className="grid grid-rows-2 px-1">
+        {unitCustomName || unit.customName ? (
+          <>
+            <p className="text-xl">{unitCustomName || unit.customName}</p>
+            <p className="font-extrabold uppercase text-xl drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
+              {unit.Name}
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="row-start-1 font-extrabold uppercase text-xl drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
+              {unit.Name}
+            </p>
+          </>
+        )}
+
+        {/* <p className="text-xl">{unitCustomName ? unitCustomName : ""}</p>
         <p className="font-extrabold uppercase text-xl drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
-          {unit ? unit.Name : "Unit Name"}
-        </p>
+          {unit.Name}
+        </p> */}
       </div>
-      <div className="px-5 font-bold text-2xl">
-        PV:{unit ? unit.BFPointValue : 0}
-      </div>
+      <div className="px-5 font-bold text-2xl">PV:{unit.BFPointValue}</div>
     </div>
   );
 }
