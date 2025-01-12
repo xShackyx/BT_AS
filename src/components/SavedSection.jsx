@@ -1,6 +1,13 @@
+import { useState } from "react";
 import CardButton from "./CardButton";
 
-function SavedSection({ roster, setRoster, selectedUnit, setSelectedUnit }) {
+function SavedSection({
+  totalPV,
+  roster,
+  setRoster,
+  selectedUnit,
+  setSelectedUnit,
+}) {
   function removeUnit(id, i) {
     setRoster([
       ...roster.filter(
@@ -10,21 +17,18 @@ function SavedSection({ roster, setRoster, selectedUnit, setSelectedUnit }) {
     ]);
   }
 
+  const [hoveredEl, setHoveredEl] = useState(null);
+
   return (
     <div className="flex flex-col w-1/3 h-screen">
-      <p className="font-bold text-center">Saved Units</p>
+      <p className="font-bold text-center">Saved Units | Total PV: {totalPV}</p>
       <ul className="flex flex-col gap-1 overflow-auto">
         {roster?.map((unit, i) => (
           <li
-            className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col ${
-              selectedUnit !== null
-                ? unit.Id === selectedUnit.Id
-                  ? "bg-yellow-400"
-                  : ""
-                : ""
-            }`}
-            onClick={() => setSelectedUnit(unit)}
+            className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col`}
             key={unit.Id.toString() + i}
+            onMouseEnter={() => setHoveredEl(i)}
+            onMouseLeave={() => setHoveredEl(null)}
           >
             {unit.customName ? (
               <p className="font-semibold">{unit.customName}</p>
@@ -40,7 +44,7 @@ function SavedSection({ roster, setRoster, selectedUnit, setSelectedUnit }) {
               {unit.BFDamageShort}/{unit.BFDamageMedium}/{unit.BFDamageLong}{" "}
               {unit.BFAbilities ? `| Special: ${unit.BFAbilities}` : ""}
             </div>
-            {unit.Id === selectedUnit.Id ? (
+            {hoveredEl === i ? (
               <CardButton
                 color={"bg-red-600"}
                 onClick={() => removeUnit(unit.Id, i)}

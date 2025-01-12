@@ -20,11 +20,6 @@ function CardHeader({ unitCustomName }) {
             </p>
           </>
         )}
-
-        {/* <p className="text-xl">{unitCustomName ? unitCustomName : ""}</p>
-        <p className="font-extrabold uppercase text-xl drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
-          {unit.Name}
-        </p> */}
       </div>
       <div className="px-5 font-bold text-2xl">PV:{unit.BFPointValue}</div>
     </div>

@@ -15,6 +15,17 @@ function App() {
   const [roster, setRoster] = useState([]);
   const [unitCustomName, setUnitCustomName] = useState("");
   const [unitSkill, setUnitSkill] = useState(4);
+  const [totalPV, setTotalPV] = useState(0);
+
+  useEffect(
+    function () {
+      setTotalPV(0);
+      roster.forEach((unit) =>
+        setTotalPV((prevPv) => prevPv + unit.BFPointValue)
+      );
+    },
+    [roster]
+  );
 
   async function getUnitList(query) {
     try {
@@ -34,7 +45,9 @@ function App() {
         const unitList = await getUnitList(query);
         setUnits(unitList);
       }
+
       if (debouncedQuery.length < 3) {
+        setSelectedUnit(null);
         return setUnits([]);
       }
       fetchUnitList(debouncedQuery);
@@ -44,8 +57,6 @@ function App() {
 
   return (
     <div className="p-5 flex justify-evenly bg-slate-200 gap-2">
-      {/* <img className="w-[42rem] h-[27rem]" src={testCard} /> */}
-
       <SearchSection
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -67,8 +78,8 @@ function App() {
         unitSkill={unitSkill}
         setUnitSkill={setUnitSkill}
       />
-      {/* <button onClick={() => console.log(roster)}>pippo</button> */}
       <SavedSection
+        totalPV={totalPV}
         roster={roster}
         setRoster={setRoster}
         selectedUnit={selectedUnit}
