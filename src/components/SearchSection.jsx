@@ -9,8 +9,8 @@ function SearchSection({
   units,
   selectedUnit,
   setSelectedUnit,
-  roster,
-  setRoster,
+  selectedSquad,
+  setSelectedSquad,
   unitCustomName,
   setUnitCustomName,
   unitSkill,
@@ -27,8 +27,8 @@ function SearchSection({
         units={units}
         selectedUnit={selectedUnit}
         setSelectedUnit={setSelectedUnit}
-        roster={roster}
-        setRoster={setRoster}
+        selectedSquad={selectedSquad}
+        setSelectedSquad={setSelectedSquad}
         unitCustomName={unitCustomName}
         setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}

@@ -41,7 +41,7 @@ function CardUnitType({ unitSkill }) {
           <span className="font-bold">{unit.Role?.Name}</span>
         </p>
         <p>
-          {"Skill: "} {unit.skill ? unit.skill : unitSkill}
+          {"Skill: "} {unit.Skill ? unit.Skill : unitSkill}
         </p>
       </div>
     </div>

@@ -6,9 +6,9 @@ function CardHeader({ unitCustomName }) {
   return (
     <div className="flex justify-between">
       <div className="grid grid-rows-2 px-1">
-        {unitCustomName || unit.customName ? (
+        {unitCustomName || unit.CustomName ? (
           <>
-            <p className="text-xl">{unitCustomName || unit.customName}</p>
+            <p className="text-xl">{unitCustomName || unit.CustomName}</p>
             <p className="font-extrabold uppercase text-xl drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
               {unit.Name}
             </p>

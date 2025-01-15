@@ -1,56 +1,50 @@
-import { useState } from "react";
-import CardButton from "./CardButton";
+import { useEffect, useState } from "react";
+import BigButton from "./BigButton";
+import UnitStats from "./UnitStats";
 
-function SavedSection({
-  totalPV,
-  roster,
-  setRoster,
-  selectedUnit,
-  setSelectedUnit,
-}) {
+function SavedSection({ totalPV, selectedSquad, handleUnits }) {
+  const [unitList, setUnitList] = useState([]);
+
   function removeUnit(id, i) {
-    setRoster([
-      ...roster.filter(
-        (unit, unitIndex) =>
-          unit.Id.toString() + unitIndex !== id.toString() + i
-      ),
-    ]);
+    const newUnits = selectedSquad.Units.filter(
+      (unit, unitIndex) => unit.Id.toString() + unitIndex !== id.toString() + i
+    );
+    handleUnits(newUnits);
+    // selectedSquad.Units = newUnits;
+    // setUnitList(newUnits);
+    // setSelectedSquad(selectedSquad);
   }
+
+  useEffect(
+    function () {
+      setUnitList(selectedSquad?.Units);
+    },
+    [selectedSquad?.Units]
+  );
 
   const [hoveredEl, setHoveredEl] = useState(null);
 
   return (
     <div className="flex flex-col w-1/3 h-screen">
-      <p className="font-bold text-center">Saved Units | Total PV: {totalPV}</p>
+      <h2 className="font-bold text-center">
+        Saved Units | Total PV: {totalPV ? totalPV : 0}
+      </h2>
       <ul className="flex flex-col gap-1 overflow-auto">
-        {roster?.map((unit, i) => (
+        {unitList?.map((unit, i) => (
           <li
             className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col`}
             key={unit.Id.toString() + i}
             onMouseEnter={() => setHoveredEl(i)}
             onMouseLeave={() => setHoveredEl(null)}
           >
-            {unit.customName ? (
-              <p className="font-semibold">{unit.customName}</p>
-            ) : (
-              ""
-            )}
-            <div>
-              <span className="font-semibold">{unit.Name} </span> | PV:{" "}
-              {unit.BFPointValue} | MV: {unit.BFMove} | Skill: {unit.skill}
-            </div>
-            <div>
-              A/S: {unit.BFArmor}/{unit.BFStructure} | Damage:{" "}
-              {unit.BFDamageShort}/{unit.BFDamageMedium}/{unit.BFDamageLong}{" "}
-              {unit.BFAbilities ? `| Special: ${unit.BFAbilities}` : ""}
-            </div>
+            <UnitStats unit={unit} />
             {hoveredEl === i ? (
-              <CardButton
+              <BigButton
                 color={"bg-red-600"}
                 onClick={() => removeUnit(unit.Id, i)}
               >
-                ❌
-              </CardButton>
+                ✖
+              </BigButton>
             ) : (
               ""
             )}

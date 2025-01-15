@@ -11,7 +11,7 @@ const UnitProvider = function ({ unit, children }) {
 function useUnit() {
   const context = useContext(UnitContext);
   if (context === undefined)
-    throw new Error("UnitContext was used outside of UnitProvide");
+    throw new Error("UnitContext was used outside of UnitProvider");
   return context;
 }
 

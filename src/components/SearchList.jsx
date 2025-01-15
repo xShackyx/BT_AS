@@ -1,11 +1,12 @@
-import CardButton from "./CardButton";
+import BigButton from "./BigButton";
+import UnitStats from "./UnitStats";
 
 function SearchList({
   units,
   selectedUnit,
   setSelectedUnit,
-  roster,
-  setRoster,
+  selectedSquad,
+  setSelectedSquad,
   unitCustomName,
   setUnitCustomName,
   unitSkill,
@@ -13,10 +14,13 @@ function SearchList({
   function saveUnit() {
     const newUnit = {
       ...selectedUnit,
-      customName: unitCustomName,
-      skill: unitSkill,
+      CustomName: unitCustomName,
+      Skill: unitSkill,
     };
-    setRoster([...roster, newUnit]);
+    console.log(selectedSquad);
+    const newUnits = [...selectedSquad.Units, newUnit];
+    selectedSquad.Units = newUnits;
+    setSelectedSquad(selectedSquad);
     setUnitCustomName("");
   }
 
@@ -34,19 +38,11 @@ function SearchList({
           onClick={() => setSelectedUnit(unit)}
           key={unit.Id}
         >
-          <div>
-            <span className="font-semibold">{unit.Name} </span> | PV:{" "}
-            {unit.BFPointValue}| MV: {unit.BFMove}
-          </div>
-          <div>
-            A/S: {unit.BFArmor}/{unit.BFStructure} | Damage:{" "}
-            {unit.BFDamageShort}/{unit.BFDamageMedium}/{unit.BFDamageLong}{" "}
-            {unit.BFAbilities ? `| Special: ${unit.BFAbilities}` : ""}
-          </div>
+          <UnitStats unit={unit} />
           {unit.Id === selectedUnit?.Id ? (
-            <CardButton color={"bg-green-500"} onClick={saveUnit}>
+            <BigButton color={"bg-green-500"} onClick={saveUnit}>
               💾
-            </CardButton>
+            </BigButton>
           ) : (
             ""
           )}
