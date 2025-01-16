@@ -14,7 +14,6 @@ function Homepage() {
 
   function handleAddNewSquad(e) {
     e.preventDefault();
-    console.log(roster);
     if (newSquadName.length <= 0) return;
     const newsquadList = roster.concat({
       Name: newSquadName,

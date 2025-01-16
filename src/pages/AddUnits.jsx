@@ -9,59 +9,49 @@ import SearchSection from "../components/SearchSection";
 import SavedSection from "../components/SavedSection";
 import PreviewCardSection from "../components/PreviewCardSection";
 
-function AddUnits({ totalPV, setTotalPV }) {
+function AddUnits() {
   const [units, setUnits] = useState([]);
   const [filterQuery, setFilterQuery] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [unitCustomName, setUnitCustomName] = useState("");
   const [unitSkill, setUnitSkill] = useState(4);
-  const [selectedSquad, setSelectedSquad] = useState({});
+  const [squadUnits, setSquadUnits] = useState([]);
+  const [squadName, setSquadName] = useState("");
+  const [totalPV, setTotalPV] = useState(0);
 
   const debouncedQuery = useDebounce(searchQuery, 1);
-  const { roster, getSingleSquad } = useRoster();
+  const { roster, setNewRoster, getSingleSquad } = useRoster();
   const { squadId } = useParams();
 
-  // useEffect(
-  //   function () {
-  //     setSelectedSquad(getSingleSquad(Number(squadId)));
-
-  //     console.log(selectedSquad);
-  //   },
-  //   [squadId, getSingleSquad]
-  // );
-
   useEffect(() => {
-    // Test
     async function fetchSingleSquad() {
       const res = await getSingleSquad(Number(squadId));
       const data = await res;
-      console.log(data);
-      setSelectedSquad(data);
+      setSquadUnits(data.Units);
+      setSquadName(data.Name);
     }
     fetchSingleSquad();
-    //    console.log(selectedSquad);
   }, [squadId, getSingleSquad]);
-
-  // useEffect(
-  //   function () {
-  //     console.log(selectedSquad);
-  //   },
-  //   [selectedSquad.Units]
-  // );
 
   useEffect(
     function () {
       setTotalPV(0);
-      roster.forEach((unit) =>
+      squadUnits.forEach((unit) =>
         setTotalPV((prevPv) => prevPv + unit.BFPointValue)
       );
     },
-    [roster]
+    [squadUnits]
   );
 
-  function handleUnits(units) {
-    selectedSquad.Units = units;
+  function handleSaveSquadUnits() {
+    const newRoster = roster.map((squad) =>
+      squad.Id === Number(squadId)
+        ? { ...squad, totalPV, Units: squadUnits }
+        : squad
+    );
+    setNewRoster(newRoster);
+    setSquadUnits([]);
   }
 
   async function getUnitList(query) {
@@ -102,11 +92,12 @@ function AddUnits({ totalPV, setTotalPV }) {
         units={units}
         selectedUnit={selectedUnit}
         setSelectedUnit={setSelectedUnit}
-        selectedSquad={selectedSquad}
-        setSelectedSquad={setSelectedSquad}
+        squadUnits={squadUnits}
+        setSquadUnits={setSquadUnits}
         unitCustomName={unitCustomName}
         setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}
+        setUnitSkill={setUnitSkill}
       />
       <PreviewCardSection
         selectedUnit={selectedUnit}
@@ -114,11 +105,13 @@ function AddUnits({ totalPV, setTotalPV }) {
         setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}
         setUnitSkill={setUnitSkill}
+        handleSaveSquadUnits={handleSaveSquadUnits}
       />
       <SavedSection
         totalPV={totalPV}
-        selectedSquad={selectedSquad}
-        handleUnits={handleUnits}
+        squadName={squadName}
+        squadUnits={squadUnits}
+        setSquadUnits={setSquadUnits}
       />
     </div>
   );

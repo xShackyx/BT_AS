@@ -9,11 +9,12 @@ function SearchSection({
   units,
   selectedUnit,
   setSelectedUnit,
-  selectedSquad,
-  setSelectedSquad,
+  squadUnits,
+  setSquadUnits,
   unitCustomName,
   setUnitCustomName,
   unitSkill,
+  setUnitSkill,
 }) {
   return (
     <div className="flex flex-col gap-2 w-1/3 h-screen">
@@ -27,11 +28,12 @@ function SearchSection({
         units={units}
         selectedUnit={selectedUnit}
         setSelectedUnit={setSelectedUnit}
-        selectedSquad={selectedSquad}
-        setSelectedSquad={setSelectedSquad}
+        squadUnits={squadUnits}
+        setSquadUnits={setSquadUnits}
         unitCustomName={unitCustomName}
         setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}
+        setUnitSkill={setUnitSkill}
       />
     </div>
   );

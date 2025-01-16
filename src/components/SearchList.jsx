@@ -5,11 +5,12 @@ function SearchList({
   units,
   selectedUnit,
   setSelectedUnit,
-  selectedSquad,
-  setSelectedSquad,
+  squadUnits,
+  setSquadUnits,
   unitCustomName,
   setUnitCustomName,
   unitSkill,
+  setUnitSkill,
 }) {
   function saveUnit() {
     const newUnit = {
@@ -17,11 +18,11 @@ function SearchList({
       CustomName: unitCustomName,
       Skill: unitSkill,
     };
-    console.log(selectedSquad);
-    const newUnits = [...selectedSquad.Units, newUnit];
-    selectedSquad.Units = newUnits;
-    setSelectedSquad(selectedSquad);
+    const newUnits = [...squadUnits, newUnit];
+    squadUnits = newUnits;
+    setSquadUnits(squadUnits);
     setUnitCustomName("");
+    setUnitSkill(4);
   }
 
   return (

@@ -2,24 +2,21 @@ import { useEffect, useState } from "react";
 import BigButton from "./BigButton";
 import UnitStats from "./UnitStats";
 
-function SavedSection({ totalPV, selectedSquad, handleUnits }) {
+function SavedSection({ totalPV, squadName, squadUnits, setSquadUnits }) {
   const [unitList, setUnitList] = useState([]);
 
-  function removeUnit(id, i) {
-    const newUnits = selectedSquad.Units.filter(
+  function handleRemoveUnit(id, i) {
+    const newUnits = squadUnits.filter(
       (unit, unitIndex) => unit.Id.toString() + unitIndex !== id.toString() + i
     );
-    handleUnits(newUnits);
-    // selectedSquad.Units = newUnits;
-    // setUnitList(newUnits);
-    // setSelectedSquad(selectedSquad);
+    setSquadUnits(newUnits);
   }
 
   useEffect(
     function () {
-      setUnitList(selectedSquad?.Units);
+      setUnitList(squadUnits);
     },
-    [selectedSquad?.Units]
+    [squadUnits]
   );
 
   const [hoveredEl, setHoveredEl] = useState(null);
@@ -27,7 +24,7 @@ function SavedSection({ totalPV, selectedSquad, handleUnits }) {
   return (
     <div className="flex flex-col w-1/3 h-screen">
       <h2 className="font-bold text-center">
-        Saved Units | Total PV: {totalPV ? totalPV : 0}
+        {squadName}'s Saved Units | Total PV: {totalPV ? totalPV : 0}
       </h2>
       <ul className="flex flex-col gap-1 overflow-auto">
         {unitList?.map((unit, i) => (
@@ -41,7 +38,7 @@ function SavedSection({ totalPV, selectedSquad, handleUnits }) {
             {hoveredEl === i ? (
               <BigButton
                 color={"bg-red-600"}
-                onClick={() => removeUnit(unit.Id, i)}
+                onClick={() => handleRemoveUnit(unit.Id, i)}
               >
                 ✖
               </BigButton>

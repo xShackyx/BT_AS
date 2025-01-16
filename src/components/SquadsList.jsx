@@ -4,15 +4,24 @@ import { useRoster } from "../contexts/RosterContext";
 
 import BigButton from "./BigButton";
 import UnitStats from "./UnitStats";
+import ConfirmModal from "./ConfirmModal";
 
 function SquadsList({ handleRemoveSquad }) {
-  const { roster } = useRoster();
+  const { roster, setNewRoster } = useRoster();
   const [list, setList] = useState(roster);
+  const [selectedSquad, setSelectedSquad] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleShowUnits(squad, i) {
     const newList = [...list];
     newList[i].ShowUnits = !newList[i].ShowUnits;
     setList(newList);
+    setNewRoster(newList);
+  }
+
+  function openModal(squad) {
+    setIsModalOpen(true);
+    setSelectedSquad(squad);
   }
 
   useEffect(
@@ -24,11 +33,19 @@ function SquadsList({ handleRemoveSquad }) {
 
   return (
     <ul className="flex gap-1 flex-wrap">
+      <ConfirmModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        confirmedModal={handleRemoveSquad}
+        element={selectedSquad}
+      />
       {list?.map((squad, i) => (
         <li className="relative w-[30rem] p-2 flex flex-col gap-1" key={i}>
           <div className="h-20 border border-black rounded bg-blue-300">
             <h3 className="p-1 text-2xl font-bold">{squad.Name}</h3>
-            <p className="p-1 text-xl font-semibold">Total PV:</p>
+            <p className="p-1 text-xl font-semibold">
+              Total PV: {squad.totalPV ? squad.totalPV : 0}
+            </p>
             {squad.ShowUnits ? (
               <BigButton
                 color="bg-green-500"
@@ -52,7 +69,7 @@ function SquadsList({ handleRemoveSquad }) {
             <BigButton
               color="bg-red-500"
               yAxys="top-10"
-              onClick={() => handleRemoveSquad(squad)}
+              onClick={() => openModal(squad)}
             >
               ✖
             </BigButton>

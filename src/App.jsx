@@ -5,28 +5,13 @@ import AddUnits from "./pages/AddUnits";
 import { RosterProvider } from "./contexts/RosterContext";
 
 function App() {
-  const [totalPV, setTotalPV] = useState(0);
-
-  // useEffect(
-  //   function () {
-  //     setTotalPV(0);
-  //     roster.forEach((unit) =>
-  //       setTotalPV((prevPv) => prevPv + unit.BFPointValue)
-  //     );
-  //   },
-  //   [roster]
-  // );
-
   return (
     <div className="h-screen bg-slate-200">
       <RosterProvider>
         <BrowserRouter>
           <Routes>
             <Route index element={<Homepage />} />
-            <Route
-              path="squad/:squadId"
-              element={<AddUnits totalPv={totalPV} setTotalPV={setTotalPV} />}
-            />
+            <Route path="squad/:squadId" element={<AddUnits />} />
           </Routes>
         </BrowserRouter>
       </RosterProvider>
