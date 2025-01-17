@@ -11,7 +11,6 @@ import PreviewCardSection from "../components/PreviewCardSection";
 
 function AddUnits() {
   const [units, setUnits] = useState([]);
-  const [filterQuery, setFilterQuery] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [unitCustomName, setUnitCustomName] = useState("");
@@ -19,6 +18,12 @@ function AddUnits() {
   const [squadUnits, setSquadUnits] = useState([]);
   const [squadName, setSquadName] = useState("");
   const [totalPV, setTotalPV] = useState(0);
+
+  const [filterQuery, setFilterQuery] = useState({
+    MinPV: 1,
+    MaxPV: 999,
+    Name: "",
+  });
 
   const debouncedQuery = useDebounce(searchQuery, 1);
   const { roster, setNewRoster, getSingleSquad } = useRoster();
@@ -28,8 +33,8 @@ function AddUnits() {
     async function fetchSingleSquad() {
       const res = await getSingleSquad(Number(squadId));
       const data = await res;
-      setSquadUnits(data.Units);
-      setSquadName(data.Name);
+      setSquadUnits(data?.Units);
+      setSquadName(data?.Name);
     }
     fetchSingleSquad();
   }, [squadId, getSingleSquad]);
@@ -37,7 +42,7 @@ function AddUnits() {
   useEffect(
     function () {
       setTotalPV(0);
-      squadUnits.forEach((unit) =>
+      squadUnits?.forEach((unit) =>
         setTotalPV((prevPv) => prevPv + unit.BFPointValue)
       );
     },
@@ -58,7 +63,7 @@ function AddUnits() {
     try {
       const res = await Axios({
         url: `https://masterunitlist.azurewebsites.net/Unit/QuickList`,
-        params: { MinPV: 1, MaxPV: 999, Name: query },
+        params: { ...filterQuery, Name: query },
       });
       return res.data.Units;
     } catch (error) {
@@ -79,7 +84,7 @@ function AddUnits() {
       }
       fetchUnitList(debouncedQuery);
     },
-    [debouncedQuery]
+    [debouncedQuery, filterQuery]
   );
 
   return (
