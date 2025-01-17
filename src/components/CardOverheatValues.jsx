@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useUnit } from "../contexts/UnitContext";
 import CardOverheatButton from "./CardOverheatButton";
 
-function CardOverheatValues() {
+function CardOverheatValues({ cardDisabled }) {
   const { unit } = useUnit();
   const [overheatToggle, setOverheatToggle] = useState(0);
 
@@ -20,6 +20,7 @@ function CardOverheatValues() {
             overheatColor="bg-green-500"
             overheatToggle={overheatToggle}
             setOverheatToggle={setOverheatToggle}
+            cardDisabled={cardDisabled}
             id="0"
           >
             0
@@ -29,6 +30,7 @@ function CardOverheatValues() {
             overheatColor="bg-yellow-500"
             overheatToggle={overheatToggle}
             setOverheatToggle={setOverheatToggle}
+            cardDisabled={cardDisabled}
             id="1"
           >
             1
@@ -38,6 +40,7 @@ function CardOverheatValues() {
             overheatColor="bg-orange-500"
             overheatToggle={overheatToggle}
             setOverheatToggle={setOverheatToggle}
+            cardDisabled={cardDisabled}
             id="2"
           >
             2
@@ -47,6 +50,7 @@ function CardOverheatValues() {
             overheatColor="bg-orange-600"
             overheatToggle={overheatToggle}
             setOverheatToggle={setOverheatToggle}
+            cardDisabled={cardDisabled}
             id="3"
           >
             3
@@ -56,6 +60,7 @@ function CardOverheatValues() {
             overheatColor="bg-red-600"
             overheatToggle={overheatToggle}
             setOverheatToggle={setOverheatToggle}
+            cardDisabled={cardDisabled}
             id="4"
           >
             S

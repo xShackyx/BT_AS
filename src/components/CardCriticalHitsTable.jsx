@@ -1,7 +1,7 @@
 import { useUnit } from "../contexts/UnitContext";
 import CardHitPointButton from "./CardHitPointButton";
 
-function CardCriticalHitsTable() {
+function CardCriticalHitsTable({ cardDisabled }) {
   const { unit } = useUnit();
 
   return (
@@ -17,64 +17,33 @@ function CardCriticalHitsTable() {
         <div className="col-span-2">
           <div>
             <div className="flex items-center gap-1">
-              <CardHitPointButton />
-              <CardHitPointButton />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
               <span className="text-sm">+1 Heat/Firing weapons</span>
             </div>
             <div className="flex items-center gap-1">
-              <CardHitPointButton />
-              <CardHitPointButton />
-              <CardHitPointButton />
-              <CardHitPointButton />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
               <span className="text-sm">+2 To-Hit Each</span>
             </div>
             <div className="flex items-center gap-1">
-              <CardHitPointButton />
-              <CardHitPointButton />
-              <CardHitPointButton />
-              <CardHitPointButton />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
               <span className="text-sm">&frac12; MV Each</span>
             </div>
             <div className="flex items-center gap-1">
-              <CardHitPointButton />
-              <CardHitPointButton />
-              <CardHitPointButton />
-              <CardHitPointButton />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
+              <CardHitPointButton cardDisabled={cardDisabled} />
               <span className="text-sm">-1 Damage Each</span>
             </div>
           </div>
         </div>
-        {/* <div className="uppercase font-bold text-xs flex gap-1">
-          engine
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <span className="font-normal normal-case">
-            +1 Heat/Firing weapons
-          </span>
-        </div>
-        <div className="uppercase font-bold text-xs flex  gap-1">
-          fire control <CardHitPointButton />
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <span className="font-normal normal-case">+2 To-Hit Each </span>
-        </div>
-        <div className="uppercase font-bold text-xs flex  gap-1">
-          mp
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <span className="font-normal normal-case">&frac12; MV Each</span>
-        </div>
-        <div className="uppercase font-bold text-xs flex  gap-1">
-          weapons
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <CardHitPointButton />
-          <span className="font-normal normal-case">-1 Damage Each</span>
-        </div> */}
       </div>
     </div>
   );

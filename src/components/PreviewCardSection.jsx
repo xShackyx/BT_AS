@@ -26,6 +26,7 @@ function PreviewCardSection({
             selectedUnit={selectedUnit}
             unitCustomName={unitCustomName}
             unitSkill={unitSkill}
+            cardDisabled={true}
           />
           <ModifyCard
             unitCustomName={unitCustomName}
