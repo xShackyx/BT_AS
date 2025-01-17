@@ -10,7 +10,7 @@ function AddNewSquad({
         className="flex-auto border border-black rounded"
         type="text"
         value={newSquadName}
-        placeholder=" Lance Group"
+        placeholder=" New Squad"
         onChange={handleChangeNewSquadName}
       />
       <button

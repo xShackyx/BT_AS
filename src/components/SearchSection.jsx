@@ -17,7 +17,7 @@ function SearchSection({
   setUnitSkill,
 }) {
   return (
-    <div className="flex flex-col gap-2 w-1/3 h-screen">
+    <div className="flex flex-col h-full gap-2 w-1/3">
       <Searchbar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

@@ -7,7 +7,7 @@ const RosterProvider = function ({ children }) {
 
   useEffect(function () {
     const local = JSON.parse(localStorage.getItem("roster"));
-    setRoster(local);
+    if (local) setRoster(local);
   }, []);
 
   function setNewRoster(squads) {

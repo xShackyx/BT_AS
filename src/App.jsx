@@ -6,7 +6,7 @@ import { RosterProvider } from "./contexts/RosterContext";
 
 function App() {
   return (
-    <div className="h-screen bg-slate-200">
+    <div className=" overflow-hidden bg-slate-200">
       <RosterProvider>
         <BrowserRouter>
           <Routes>

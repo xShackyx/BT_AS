@@ -1,4 +1,4 @@
-function UnitStats({ unit }) {
+function UnitStats({ unit, isCustomUnit = true }) {
   return (
     <>
       {unit.CustomName ? (
@@ -9,7 +9,7 @@ function UnitStats({ unit }) {
       <div className="px-1">
         <span className="font-semibold">{unit.Name} </span> | PV:{" "}
         {unit.BFPointValue} | MV: {unit.BFMove} | Skill:{" "}
-        {unit.Skill ? unit.Skill : unit.Skill}
+        {isCustomUnit ? unit.Skill : 4}
       </div>
       <div className="px-1">
         A/S: {unit.BFArmor}/{unit.BFStructure} | Damage: {unit.BFDamageShort}/

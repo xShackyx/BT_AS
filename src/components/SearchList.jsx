@@ -26,7 +26,7 @@ function SearchList({
   }
 
   return (
-    <ul className="flex flex-col gap-1 overflow-auto">
+    <ul className="flex flex-col gap-1 overflow-hidden overflow-y-scroll">
       {units?.map((unit) => (
         <li
           className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col ${
@@ -39,7 +39,7 @@ function SearchList({
           onClick={() => setSelectedUnit(unit)}
           key={unit.Id}
         >
-          <UnitStats unit={unit} />
+          <UnitStats unit={unit} isCustomUnit={false} />
           {unit.Id === selectedUnit?.Id ? (
             <BigButton color={"bg-green-500"} onClick={saveUnit}>
               💾

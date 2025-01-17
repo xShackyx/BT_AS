@@ -22,11 +22,11 @@ function SavedSection({ totalPV, squadName, squadUnits, setSquadUnits }) {
   const [hoveredEl, setHoveredEl] = useState(null);
 
   return (
-    <div className="flex flex-col w-1/3 h-screen">
+    <div className="flex flex-col w-1/3 h-full">
       <h2 className="font-bold text-center">
         {squadName}'s Saved Units | Total PV: {totalPV ? totalPV : 0}
       </h2>
-      <ul className="flex flex-col gap-1 overflow-auto">
+      <ul className="flex flex-col gap-1 overflow-hidden overflow-y-scroll">
         {unitList?.map((unit, i) => (
           <li
             className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col`}

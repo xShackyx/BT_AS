@@ -83,7 +83,7 @@ function AddUnits() {
   );
 
   return (
-    <div className="p-5 flex justify-evenly gap-2">
+    <div className="p-5 flex h-screen justify-evenly gap-2">
       <SearchSection
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
