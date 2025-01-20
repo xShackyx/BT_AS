@@ -12,6 +12,7 @@ function AddNewSquad({
         value={newSquadName}
         placeholder=" New Squad"
         onChange={handleChangeNewSquadName}
+        maxLength="25"
       />
       <button
         className="flex-auto border border-black rounded"

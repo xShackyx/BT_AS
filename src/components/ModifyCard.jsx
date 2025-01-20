@@ -14,7 +14,7 @@ function ModifyCard({
         id="unitCustomName"
         name="unitCustomName"
         placeholder="Add a custom unit name"
-        maxLength="45"
+        maxLength="25"
       />
       <select
         className="w-10"

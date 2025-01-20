@@ -4,7 +4,7 @@ function CardDamageValues() {
   const { unit } = useUnit();
 
   return (
-    <div className="px-1 col-span-3 flex items-center row-span-3 bg-gray-300 border border-black rounded">
+    <div className="px-1 col-span-3 flex items-center  bg-gray-300 border border-black rounded">
       <p className="uppercase font-bold text-xs tracking-wide [writing-mode:vertical-rl] rotate-180">
         damage
       </p>

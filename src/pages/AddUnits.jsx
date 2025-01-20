@@ -80,6 +80,7 @@ function AddUnits() {
 
       if (debouncedQuery.length < 3) {
         setSelectedUnit(null);
+        setUnitCustomName("");
         return setUnits([]);
       }
       fetchUnitList(debouncedQuery);

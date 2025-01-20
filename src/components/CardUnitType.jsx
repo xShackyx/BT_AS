@@ -16,7 +16,7 @@ function CardUnitType({ unitSkill }) {
   const { unit } = useUnit();
 
   return (
-    <div className="py-1 px-3 flex flex-col gap-2 col-span-3 row-span-3 bg-gray-300 border border-black rounded uppercase">
+    <div className="py-1 px-3 flex flex-col gap-2 col-span-3 bg-gray-300 border border-black rounded uppercase">
       <div className="flex justify-between">
         <p>
           {"Tp: "}

@@ -27,7 +27,7 @@ function Searchbar({
         >
           <option value="">All Rules</option>
           <option value="55">Introductory Rules</option>
-          <option value="48">Standard Rules</option>
+          <option value="4">Standard Rules</option>
           <option value="5">Advanced Rules</option>
         </select>
         <select
