@@ -18,7 +18,7 @@ function SearchSection({
   isLoading,
 }) {
   return (
-    <div className="flex flex-col h-full gap-2 w-1/3">
+    <div className="flex flex-col gap-2 xl:w-1/3">
       <Searchbar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

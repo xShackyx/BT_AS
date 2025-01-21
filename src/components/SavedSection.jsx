@@ -22,7 +22,7 @@ function SavedSection({ totalPV, squadName, squadUnits, setSquadUnits }) {
   const [hoveredEl, setHoveredEl] = useState(null);
 
   return (
-    <div className="flex flex-col w-1/3 h-full">
+    <div className="flex flex-col xl:w-1/3">
       <h2 className="font-bold text-center">
         {squadName}'s Saved Units | Total PV: {totalPV ? totalPV : 0}
       </h2>

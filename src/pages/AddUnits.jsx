@@ -47,7 +47,8 @@ function AddUnits() {
       const basePV = selectedUnit?.BFPointValue;
       let PVmodifier = 0;
       let skillStep = 0;
-      if (skillValue === 4) setUnitPV(basePV);
+      let newUnitPV = null;
+      if (skillValue === 4) newUnitPV = basePV;
       if (skillValue > 4) {
         skillStep = skillValue - 4;
 
@@ -62,7 +63,7 @@ function AddUnits() {
         if (basePV >= 85 && basePV <= 94) PVmodifier = 9;
         if (basePV >= 95 && basePV <= 104) PVmodifier = 10;
 
-        setUnitPV(basePV - PVmodifier * skillStep);
+        newUnitPV = basePV - PVmodifier * skillStep;
       }
       if (skillValue < 4) {
         skillStep = 4 - skillValue;
@@ -87,12 +88,11 @@ function AddUnits() {
         if (basePV >= 88 && basePV <= 92) PVmodifier = 18;
         if (basePV >= 93 && basePV <= 107) PVmodifier = 19;
 
-        setUnitPV(basePV + PVmodifier * skillStep);
+        newUnitPV = basePV + PVmodifier * skillStep;
       }
-      console.log(unitPV);
-      setSelectedUnit({ ...selectedUnit, CustomBFPointValue: unitPV });
+      setSelectedUnit({ ...selectedUnit, CustomBFPointValue: newUnitPV });
     },
-    [unitSkill, selectedUnit]
+    [unitSkill]
   );
 
   useEffect(
@@ -148,7 +148,7 @@ function AddUnits() {
   );
 
   return (
-    <div className="p-5 flex h-screen justify-evenly gap-2">
+    <div className="p-5 flex flex-col h-screen overflow-auto xl:flex-row justify-evenly gap-2">
       <SearchSection
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -166,6 +166,7 @@ function AddUnits() {
         unitPV={unitPV}
         isLoading={isLoading}
       />
+
       <PreviewCardSection
         selectedUnit={selectedUnit}
         unitCustomName={unitCustomName}
