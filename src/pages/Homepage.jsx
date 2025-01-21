@@ -35,7 +35,10 @@ function Homepage() {
   return (
     <div className="h-screen flex flex-col p-1 gap-5">
       <div className="flex items-center justify-around border border-black rounded p-5">
-        <div className="flex-auto flex flex-col items-center justify-center">
+        <div className="flex-auto flex flex-col gap-1 items-center justify-center">
+          <h1 className="font-bold text-2xl">
+            BattleTech Alpha Strike Companion
+          </h1>
           <h2 className="font-bold uppercase">Squads</h2>
 
           <AddNewSquad
