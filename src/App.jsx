@@ -7,7 +7,7 @@ import PlayMode from "./pages/PlayMode";
 
 function App() {
   return (
-    <div className="h-full overflow-scroll bg-slate-200">
+    <div className="h-full overflow-auto bg-slate-200">
       <RosterProvider>
         <BrowserRouter>
           <Routes>

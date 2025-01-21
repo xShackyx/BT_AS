@@ -25,6 +25,12 @@ function SearchList({
     setUnitSkill(4);
   }
 
+  function handleSelectUnit(unit) {
+    setSelectedUnit(unit);
+    setUnitCustomName("");
+    setUnitSkill(4);
+  }
+
   return (
     <ul className="flex flex-col gap-1 overflow-hidden overflow-y-scroll">
       {units?.map((unit) => (
@@ -36,7 +42,7 @@ function SearchList({
                 : ""
               : ""
           }`}
-          onClick={() => setSelectedUnit(unit)}
+          onClick={() => handleSelectUnit(unit)}
           key={unit.Id}
         >
           <UnitStats unit={unit} isCustomUnit={false} />

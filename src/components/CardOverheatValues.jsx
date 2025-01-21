@@ -7,12 +7,12 @@ function CardOverheatValues({ cardDisabled }) {
   const [overheatToggle, setOverheatToggle] = useState(0);
 
   return (
-    <div className="p-1 col-span-3 flex gap-5 items-center bg-gray-300 border border-black rounded">
+    <div className="p-1 col-span-3 flex flex-col 2xl:flex-row gap-5 items-center bg-gray-300 border border-black rounded">
       <div className="flex gap-1">
         <p>OV:</p>
         <p className="font-bold">{unit.BFOverheat}</p>
       </div>
-      <div className="flex items-center gap-5">
+      <div className="flex flex-col xl:flex-row items-center gap-5">
         <p className="uppercase font-semibold">| heat scale</p>
         <div className="flex outline outline-black rounded-lg bg-gray-500">
           <CardOverheatButton

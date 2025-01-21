@@ -5,17 +5,19 @@ function CardHeader({ unitCustomName }) {
 
   return (
     <div className="flex justify-between">
-      <div className="grid grid-rows-2 px-1">
+      <div className="grid grid-rows-2 items-center px-1">
         {unitCustomName || unit.CustomName ? (
           <>
-            <p className="text-xl">{unitCustomName || unit.CustomName}</p>
-            <p className="font-extrabold uppercase text-xl drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
+            <p className=" font-semibold">
+              {unitCustomName || unit.CustomName}
+            </p>
+            <p className="font-extrabold uppercase  drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
               {unit.Name}
             </p>
           </>
         ) : (
           <>
-            <p className="row-start-1 font-extrabold uppercase text-xl drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
+            <p className="row-start-1 font-extrabold uppercase drop-shadow-[0_1px_1.5px_rgba(255,255,255)]">
               {unit.Name}
             </p>
           </>

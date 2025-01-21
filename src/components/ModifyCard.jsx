@@ -13,7 +13,7 @@ function ModifyCard({
         type="text"
         id="unitCustomName"
         name="unitCustomName"
-        placeholder="Add a custom unit name"
+        placeholder=" Add a custom unit name"
         maxLength="25"
       />
       <select

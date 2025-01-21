@@ -5,7 +5,7 @@ function CardDamageValues() {
 
   return (
     <div className="px-1 col-span-3 flex items-center  bg-gray-300 border border-black rounded">
-      <p className="uppercase font-bold text-xs tracking-wide [writing-mode:vertical-rl] rotate-180">
+      <p className="uppercase font-bold text-xs tracking-wide [writing-mode:vertical-rl] rotate-180 py-1">
         damage
       </p>
       <div className="flex items-center grow justify-between px-6">
