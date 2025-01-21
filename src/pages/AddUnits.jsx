@@ -19,7 +19,6 @@ function AddUnits() {
   const [squadName, setSquadName] = useState("");
   const [totalPV, setTotalPV] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [unitPV, setUnitPV] = useState(null);
 
   const [filterQuery, setFilterQuery] = useState({
     MinPV: 1,
@@ -163,7 +162,6 @@ function AddUnits() {
         setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}
         setUnitSkill={setUnitSkill}
-        unitPV={unitPV}
         isLoading={isLoading}
       />
 

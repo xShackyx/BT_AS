@@ -1,9 +1,8 @@
 function UnitStats({ unit, isCustomUnit = true }) {
   return (
     <>
-      {" "}
       {unit.CustomName ? (
-        <p className="font-semibold">{unit.CustomName}</p>
+        <p className="font-semibold px-1">{unit.CustomName}</p>
       ) : (
         ""
       )}
