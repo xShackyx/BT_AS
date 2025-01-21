@@ -15,6 +15,7 @@ function SearchSection({
   setUnitCustomName,
   unitSkill,
   setUnitSkill,
+  isLoading,
 }) {
   return (
     <div className="flex flex-col h-full gap-2 w-1/3">
@@ -34,6 +35,8 @@ function SearchSection({
         setUnitCustomName={setUnitCustomName}
         unitSkill={unitSkill}
         setUnitSkill={setUnitSkill}
+        isLoading={isLoading}
+        searchQuery={searchQuery}
       />
     </div>
   );

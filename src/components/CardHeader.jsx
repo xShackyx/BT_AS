@@ -23,7 +23,10 @@ function CardHeader({ unitCustomName }) {
           </>
         )}
       </div>
-      <div className="px-5 font-bold text-2xl">PV:{unit.BFPointValue}</div>
+      <div className="px-5 font-bold text-2xl">
+        PV:
+        {unit.CustomBFPointValue ? unit.CustomBFPointValue : unit.BFPointValue}
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import BigButton from "./BigButton";
+import Spinner from "./Spinner";
 import UnitStats from "./UnitStats";
 
 function SearchList({
@@ -11,6 +12,8 @@ function SearchList({
   setUnitCustomName,
   unitSkill,
   setUnitSkill,
+  isLoading,
+  searchQuery,
 }) {
   function saveUnit() {
     const newUnit = {
@@ -32,30 +35,44 @@ function SearchList({
   }
 
   return (
-    <ul className="flex flex-col gap-1 overflow-hidden overflow-y-scroll">
-      {units?.map((unit) => (
-        <li
-          className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col ${
-            selectedUnit !== null
-              ? unit.Id === selectedUnit.Id
-                ? "bg-yellow-400"
-                : ""
-              : ""
-          }`}
-          onClick={() => handleSelectUnit(unit)}
-          key={unit.Id}
-        >
-          <UnitStats unit={unit} isCustomUnit={false} />
-          {unit.Id === selectedUnit?.Id ? (
-            <BigButton color={"bg-green-500"} onClick={saveUnit}>
-              💾
-            </BigButton>
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {units?.length === 0 && searchQuery.trim() !== "" ? (
+            <p className="p-5 font-semibold text-xl text-center">
+              No units found!
+            </p>
           ) : (
-            ""
+            <ul className="flex flex-col gap-1 overflow-hidden overflow-y-scroll">
+              {units?.map((unit) => (
+                <li
+                  className={`relative p-1 border border-black bg-white rounded cursor-pointer flex flex-col ${
+                    selectedUnit !== null
+                      ? unit.Id === selectedUnit.Id
+                        ? "bg-yellow-400"
+                        : ""
+                      : ""
+                  }`}
+                  onClick={() => handleSelectUnit(unit)}
+                  key={unit.Id}
+                >
+                  <UnitStats unit={unit} isCustomUnit={false} />
+                  {unit.Id === selectedUnit?.Id ? (
+                    <BigButton color={"bg-green-500"} onClick={saveUnit}>
+                      💾
+                    </BigButton>
+                  ) : (
+                    ""
+                  )}
+                </li>
+              ))}
+            </ul>
           )}
-        </li>
-      ))}
-    </ul>
+        </>
+      )}
+    </>
   );
 }
 
