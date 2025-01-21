@@ -20,7 +20,7 @@ function PlayMode() {
             <h3 className="text-2xl text-center font-semibold border-b border-black">
               {squad.Name}
             </h3>
-            <div className="grid grid-cols-3 gap-1">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-1">
               {squad.Units?.map((unit, i) => (
                 <div className="" key={squad.Id + i}>
                   <Card
